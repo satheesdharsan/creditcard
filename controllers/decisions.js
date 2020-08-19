@@ -23,6 +23,7 @@ exports.check = function (req, res, next) {
 
     let serviceDecision = '';
     let serviceAPR = '';
+    let bankName = '';
     let cardType = '';
     let promotionMsg = '';
     let purChaseRate = '';
@@ -32,7 +33,8 @@ exports.check = function (req, res, next) {
     {
       serviceDecision = 'Eligible';
       serviceAPR = response.data.customerCard.apr;
-      cardType = response.data.customerCard.bankName;// + " " + response.data.customerCard.cardType;
+      bankName = response.data.customerCard.bankName;
+      cardType = response.data.customerCard.cardType;
       promotionMsg = response.data.customerCard.promotionMsg;
       purChaseRate = response.data.customerCard.purchaseRate;
       creditLimit = response.data.customerCard.creditLimit;
@@ -50,6 +52,7 @@ exports.check = function (req, res, next) {
             serviceDecision: serviceDecision,
             apr: serviceAPR,
             cardType: cardType,
+            bankName: bankName,
             promotionMsg: promotionMsg,
             purChaseRate: purChaseRate,
             creditLimit: creditLimit
