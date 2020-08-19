@@ -208,6 +208,11 @@
   justify-content: center;
 }
 
+.txtCenter {
+  display: flex;  
+  justify-content: center;
+}
+
 .imageCenter {
   display: flex;  
   justify-content: center;

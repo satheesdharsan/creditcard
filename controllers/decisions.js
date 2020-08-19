@@ -32,9 +32,9 @@ exports.check = function (req, res, next) {
     {
       serviceDecision = 'Eligible';
       serviceAPR = response.data.customerCard.apr;
-      cardType = response.data.customerCard.bankName;
+      cardType = response.data.customerCard.bankName;// + " " + response.data.customerCard.cardType;
       promotionMsg = response.data.customerCard.promotionMsg;
-      purChaseRate = response.data.customerCard.purChaseRate;
+      purChaseRate = response.data.customerCard.purchaseRate;
       creditLimit = response.data.customerCard.creditLimit;
     }
     else{
@@ -42,38 +42,22 @@ exports.check = function (req, res, next) {
     }
     
     res.status(200).send({
-    firstName: response.data.firstName,
-    lastName: response.data.lastName,
-    dob: response.data.dateOfBirth,
-    income: response.data.salary,
-    timestampLog: response.data.createdOn,
-    serviceDecision: serviceDecision,
-    apr: serviceAPR,
-    cardType: cardType,
-    promotionMsg: promotionMsg,
-    purChaseRate: purChaseRate,
-    creditLimit: creditLimit
-    });    
+            firstName: response.data.firstName,
+            lastName: response.data.lastName,
+            dob: response.data.dateOfBirth,
+            income: response.data.salary,
+            timestampLog: response.data.createdOn,
+            serviceDecision: serviceDecision,
+            apr: serviceAPR,
+            cardType: cardType,
+            promotionMsg: promotionMsg,
+            purChaseRate: purChaseRate,
+            creditLimit: creditLimit
+        });    
   })
   .catch((error) => {
       console.log(error)
       res.status(500).send({apiErrorMessage: 'Internal Server Error'})
   });
-  
-  /*
- res.status(200).send({
-  firstName: formData.firstName,
-  lastName: formData.lastName,
-  dob: formData.dob,
-  income: formData.income,
-  timestampLog: "27/07/2019 13:36:47 GMT+0100",
-  serviceDecision: "Eligible",
-  apr: "31.8",
-  cardType: "Vanquis",
-  promotionMsg: "0% interest balance transfer and purchases for up to 24 months. *Any introductory balance transfer offer must be made within the first 60 days of account opening for new customers.",
-  purChaseRate: "31.84",
-  creditLimit: "1,000"
-  });    
-  */
-  
+    
 }

@@ -13,7 +13,7 @@ const NotEligiblePage = props => {
                 <h2>Sorry,You are not eligible</h2>
             </div>
             <br></br>
-            <div className="row">You need to be at least 18 years old to apply for a credit card, but some cards have a higher minimum age. </div>
+            <div className="row txtCenter">You need to be at least 18 years old to apply for a credit card, but some cards have a higher minimum age. </div>
             <br></br>
             <div className="row">
                 <div className="col span-1-of-3">

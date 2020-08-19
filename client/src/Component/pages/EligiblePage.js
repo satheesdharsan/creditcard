@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-// To render the Barclay page with details
+// To render the credit card eligible page with details
 const EligiblePage = props => {
 
     let imgUrl= '../' + props.cardType + '.png';
@@ -10,7 +10,7 @@ const EligiblePage = props => {
 
      let uiRender = <div>
         <div className="row">
-            <h2>Eligible for {props.cardType} Credit Card</h2>
+            <h2>Congratulations! You are eligible for {props.cardType} Credit Card</h2>
         </div>
        <div className="row"><b>{props.promotionMsg}</b></div>
         <br></br>
@@ -21,8 +21,8 @@ const EligiblePage = props => {
             <ul >
                 <li className="col span-1-of-3">
                     <span>Representative </span>
-                    <span><b> {props.reduxCurrentApr}% APR </b></span>
-                    <span >(variable)</span>
+                    <span><b> {props.reduxCurrentApr}%</b> APR </span>
+                    <span>(variable)</span>
                 </li>
                 <li className="col span-1-of-3">
                     <span>Purchase rate </span>
@@ -30,9 +30,9 @@ const EligiblePage = props => {
                     <span>p.a. (variable)</span>
                 </li>
                 <li className="col span-1-of-3">
-                    <span>Based on a </span>
-                    <span><b>£{props.creditLimit} </b></span>
-                    <span>credit limit</span>
+                    <span>Credit limits up to </span>
+                    <span><b>£ {props.creditLimit} </b></span>
+                    <span>and no annual fee</span>
                 </li>
             </ul>
         </div>
