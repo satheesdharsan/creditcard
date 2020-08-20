@@ -22,7 +22,7 @@ const Home = props => {
             setFormErrorFirstName('Should not be empty')
         }
         else {
-            if (event.target.value.length < 2)  {
+            if (event.target.value.length < 2) {
                 setFormErrorFirstName('Atleast 2 characters')
             }
             else {
@@ -37,7 +37,7 @@ const Home = props => {
             setFormErrorLastName('Should not be empty')
         }
         else {
-            if (event.target.value.length < 2)  {
+            if (event.target.value.length < 2) {
                 setFormErrorLastName('Atleast 2 characters')
             }
             else {
@@ -49,11 +49,11 @@ const Home = props => {
     const handleIncomeChange = (event) => {
         let formIncome = event.target.value;
         if (isNaN(formIncome) || formIncome < 1) {
-            setIncome(event.target.value );
+            setIncome(event.target.value);
             setFormErrorIncome('Invalid Income Input');
-          } 
+        }
         else {
-            let reStrictToTwoDecimal= (formIncome.indexOf(".") >= 0) ? (formIncome.substr(0, formIncome.indexOf(".")) + formIncome.substr(formIncome.indexOf("."), 3)) : formIncome;
+            let reStrictToTwoDecimal = (formIncome.indexOf(".") >= 0) ? (formIncome.substr(0, formIncome.indexOf(".")) + formIncome.substr(formIncome.indexOf("."), 3)) : formIncome;
             setIncome(reStrictToTwoDecimal);
             setFormErrorIncome('');
         }
@@ -68,15 +68,15 @@ const Home = props => {
         event.preventDefault();
         if (firstName === lastName) {
             setFormErrorLastName('Lastname should not be same')
-        } else if ((formErrorFirstName === '') &&  (formErrorLastName === '') && (formErrorIncome === '')) {
+        } else if ((formErrorFirstName === '') && (formErrorLastName === '') && (formErrorIncome === '')) {
             props.spinnerAction();
             props.requestFetchDecisions(firstName, lastName, dob, income);
             setFirstName('')
             setLastName('')
             setDob("")
             setIncome('')
-           }
         }
+    }
 
     // To get the current day
     const todayDate = () => {
@@ -98,77 +98,74 @@ const Home = props => {
 
     if (props.renderUiPage === 'Home') {
         uiRender = <div className="section">
-        <div className="row subHeadingContainer">
-            <h2>Pre-qualification Check Form</h2>
-        </div>
-        <form onSubmit={handleSubmit}>
-            <div className="row">
-                <div className="contact-form">
-                    <div className="row">
-                        <div className="col span-1-of-3">
-                            <label>First Name *</label>
+            <div className="row subHeadingContainer">
+                <h2>Pre-qualification Check Form</h2>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="row">
+                    <div className="contact-form">
+                        <div className="row">
+                            <div className="col span-1-of-3">
+                                <label>First Name *</label>
+                            </div>
+                            <div className="col span-1-of-3">
+                                <input type="text" id="firstName" placeholder="Enter your First Name" required onChange={handleFirstNameChange} value={firstName} maxLength="15" />
+                            </div>
+                            <div className="col span-1-of-3 errorMessage">
+                                <p id="formErrorFirstName">{formErrorFirstName}</p>
+                            </div>
                         </div>
-                        <div className="col span-1-of-3">
-                            <input type="text" id="firstName" placeholder="Enter your First Name" required onChange={handleFirstNameChange} value={firstName} maxLength="15" />
+                        <div className="row">
+                            <div className="col span-1-of-3">
+                                <label>Last Name *</label>
+                            </div>
+                            <div className="col span-1-of-3">
+                                <input type="text" id="lastName" placeholder="Enter your Last Name" required onChange={handleLastNameChange} value={lastName} maxLength="15" />
+                            </div>
+                            <div className="col span-1-of-3 errorMessage">
+                                <p id="formErrorLastName">{formErrorLastName}</p>
+                            </div>
                         </div>
-                        <div className="col span-1-of-3 errorMessage"> 
-                             <p id="formErrorFirstName">{formErrorFirstName}</p>
+                        <div className="row">
+                            <div className="col span-1-of-3">
+                                <label>Annual Income in £ *</label>
+                            </div>
+                            <div className="col span-1-of-3">
+                                <input type="text" id="income" placeholder="Enter your Income" required onChange={handleIncomeChange} value={income} />
+                            </div>
+                            <div className="col span-1-of-3 errorMessage">
+                                <p id="formErrorIncome">{formErrorIncome}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="col span-1-of-3">
-                            <label>Last Name *</label>
+                        <div className="row">
+                            <div className="col span-1-of-3">
+                                <label>Birth Date *</label>
+                            </div>
+                            <div className="col span-1-of-3">
+                                <input type="date" id="dob" placeholder="dd-mm-yyyy" required onChange={handleDobChange} value={dob} max={todayDate()} />
+                            </div>
+                            <div className="col span-1-of-3">
+                                <label>&nbsp;</label>
+                            </div>
                         </div>
-                        <div className="col span-1-of-3">
-                            <input type="text" id="lastName" placeholder="Enter your Last Name" required onChange={handleLastNameChange} value={lastName}  maxLength="15"  />
-                        </div>
-                        <div className="col span-1-of-3 errorMessage"> 
-                             <p id="formErrorLastName">{formErrorLastName}</p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col span-1-of-3">
-                            <label>Annual Income in £ *</label>
-                        </div>
-                        <div className="col span-1-of-3">
-                            <input type="text" id="income"  placeholder="Enter your Income" required onChange={handleIncomeChange} value={income} />
-                        </div>
-                        <div className="col span-1-of-3 errorMessage"> 
-                             <p id="formErrorIncome">{formErrorIncome}</p>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col span-1-of-3">
-                            <label>Birth Date *</label>
-                        </div>
-                        <div className="col span-1-of-3">
-                            <input type="date" id="dob" placeholder="dd-mm-yyyy" required onChange={handleDobChange} value={dob} max={todayDate()} />
-                        </div>
-                        <div className="col span-1-of-3"> 
-                        <label>&nbsp;</label>
-                        </div>
-                    </div>
-                    <br></br>
-                    <div className="row">
-                        <div className="col span-1-of-3">
-                            <label>&nbsp;</label>
-                        </div>
-                        <div className="col span-3-of-3 btnCenter">
-                            <input type="submit" value="Submit"></input>
+                        <br></br>
+                        <div className="row">
+                            <div className="btnCenter">
+                                <input type="submit" value="Submit"></input>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </form>
+            <br></br>
+            <div className="errorMessage">
+                <p>{props.serverFetchError}</p>
             </div>
-        </form>
-        <br></br>
-        <div className="errorMessage">
-            <p>{props.serverFetchError}</p>
         </div>
-    </div>
     }
 
     if (props.renderUiPage === 'Loading') {
-        uiRender = <div className="spinnerCenter"><Spinner /></div>;                  
+        uiRender = <div className="spinnerCenter"><Spinner /></div>;
     }
 
     // To render the UI page based on the services 

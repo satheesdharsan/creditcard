@@ -12,8 +12,9 @@ const initialState = {
     uiPage: 'Home',
     currentApr: '',
     cardType: '',
+    bankName: '',
     promotionMsg: '',
-    purChaseRate: '',
+    purchaseRate: '',
     creditLimit: ''
 };
 
@@ -33,8 +34,9 @@ const pageReducer = (state = initialState, action) => {
                 currentApr: action.currentApr,
                 FetchError: '',
                 cardType: action.cardType,
+                bankName: action.bankName,
                 promotionMsg: action.promotionMsg,
-                purChaseRate: action.purChaseRate,
+                purchaseRate: action.purchaseRate,
                 creditLimit: action.creditLimit
             }
         case 'API_RESPONSE_ERROR':
@@ -44,10 +46,10 @@ const pageReducer = (state = initialState, action) => {
                 uiPage: 'Home'
             }
         case 'LOADING':
-                return {
-                    ...state,
-                    uiPage: 'Loading'
-                }
+            return {
+                ...state,
+                uiPage: 'Loading'
+            }
         case 'SWITCH_TO_FORM_PAGE':
             return {
                 ...state,

@@ -8,7 +8,7 @@ const NotEligiblePage = props => {
     let uiRender;
 
     if (props.renderUiPage === 'NotEligible') {
-        uiRender = <div>
+        uiRender = <div className="section">
             <div className="row">
                 <h2>Sorry,You are not eligible</h2>
             </div>

@@ -13,6 +13,12 @@ const store = MakeMockStore({
   apiServiceDecision: '',
   FetchError: '',
   uiPage: 'Home',
+  currentApr: '',
+  cardType: '',
+  bankName: '',
+  promotionMsg: '',
+  purchaseRate: '',
+  creditLimit: ''
 });
 
 describe('Test action dispatched from action creator', () => {
@@ -48,8 +54,13 @@ describe('To test fetch decision post call', () => {
         income: 123,
         timestampLog: '2020-08-12T08:34:09.663Z',
         apr: 21.80,
-        serviceDecision: 'Barclay',
-        apiErrorMessage: ''
+        serviceDecision: 'Eligible',
+        apiErrorMessage: '',
+        cardType: "Visa",
+        bankName: "Barclay",
+        promotionMsg: "0% interest balance transfer and purchases for up to 24 months. *Any introductory balance transfer offer must be made within the first 60 days of account opening for new customers.",
+        purchaseRate: "31.84",
+        creditLimit: "1,000"
       }
     }
 
@@ -61,7 +72,7 @@ describe('To test fetch decision post call', () => {
       });
     });
 
-  
+
     store.dispatch(fetchDecisions()).then(() => {
       const actionsCalled = store.getActions();
       expect(actionsCalled[0]).toEqual(fetchDecisions());

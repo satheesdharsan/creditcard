@@ -7,9 +7,9 @@ import Root from './Root';
 
 ReactDOM.render(
     <Root>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
     </Root>
     , document.getElementById('root'));
 

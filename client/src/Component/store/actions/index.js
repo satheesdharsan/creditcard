@@ -3,20 +3,21 @@ require('es6-promise').polyfill();
 
 // To map the fetch response with details
 export const fetchResponseSuccess = (res) => {
-        return {
-            type: 'API_RESPONSE_MAPPING',
-            serviceDecision: res.data.serviceDecision,
-            firstName: res.data.firstName,
-            lastName: res.data.lastName,
-            dob: res.data.dob,
-            income: res.data.income,
-            timestampLog: res.data.timestampLog,
-            currentApr: res.data.apr,
-            cardType: res.data.cardType,
-            promotionMsg: res.data.promotionMsg,
-            purChaseRate: res.data.purChaseRate,
-            creditLimit: res.data.creditLimit
-        }
+    return {
+        type: 'API_RESPONSE_MAPPING',
+        serviceDecision: res.data.serviceDecision,
+        firstName: res.data.firstName,
+        lastName: res.data.lastName,
+        dob: res.data.dob,
+        income: res.data.income,
+        timestampLog: res.data.timestampLog,
+        currentApr: res.data.apr,
+        cardType: res.data.cardType,
+        bankName: res.data.bankName,
+        promotionMsg: res.data.promotionMsg,
+        purchaseRate: res.data.purchaseRate,
+        creditLimit: res.data.creditLimit
+    }
 }
 
 export const fetchResponseError = (res) => {
@@ -50,10 +51,10 @@ export const fetchDecisions = (firstName, lastName, dob, income) => async dispat
     })
         .then(function (response) {
             if (response.status === 200) {
-               dispatch(fetchResponseSuccess(response));
+                dispatch(fetchResponseSuccess(response));
             }
             else {
-               dispatch(fetchResponseError());
+                dispatch(fetchResponseError());
             }
         })
         .catch(function (error) {

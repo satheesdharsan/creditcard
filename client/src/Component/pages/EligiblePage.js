@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 // To render the credit card eligible page with details
 const EligiblePage = props => {
 
-    let imgUrl= '../' + props.cardType + '.png';
-    let imgAlt = props.cardType + ' Card';
 
-     let uiRender = <div>
+    const [imgUrl, setImgUrl] = useState('../' + props.bankName + '.png');
+    const [imgAlt, setImgAlt] = useState(props.bankName + ' Card');
+
+    const handleonError = () => {
+        setImgUrl('../dummyCard.png');
+        setImgAlt(props.bankName + ' Card');
+    }
+
+    let uiRender = <div className="section">
         <div className="row">
-            <h2>Congratulations! You are eligible for {props.cardType} Credit Card</h2>
+            <h2>Congratulations! You are eligible for {props.bankName} {props.cardType} Credit Card</h2>
         </div>
-       <div className="row"><b>{props.promotionMsg}</b></div>
+        <div className="row"><b>{props.promotionMsg}</b></div>
         <br></br>
         <div className="row imageCenter">
-                <img src={imgUrl} alt={imgAlt} />
+            <img src={imgUrl} alt={imgAlt} onError={handleonError} />
         </div>
         <div className="row">
             <ul >
@@ -26,7 +32,7 @@ const EligiblePage = props => {
                 </li>
                 <li className="col span-1-of-3">
                     <span>Purchase rate </span>
-                    <span><b> {props.purChaseRate}% </b></span>
+                    <span><b> {props.purchaseRate}% </b></span>
                     <span>p.a. (variable)</span>
                 </li>
                 <li className="col span-1-of-3">
@@ -38,7 +44,7 @@ const EligiblePage = props => {
         </div>
         <br></br>
         <div className="row"><b>Representative Example:</b>
-        <span>Representative {props.reduxCurrentApr}% APR variable. Based on assumed borrowing of £{props.creditLimit}. Rate of interest {props.purChaseRate}% (variable) annual. Credit limit is subject to status.</span>
+            <span>Representative {props.reduxCurrentApr}% APR variable. Based on assumed borrowing of £{props.creditLimit}. Rate of interest {props.purchaseRate}% (variable) annual. Credit limit is subject to status.</span>
         </div>
         <div className="row">
             <div className="col span-1-of-3">
@@ -63,10 +69,11 @@ const EligiblePage = props => {
 const mapStateToProps = (state) => {
     return {
         renderUiPage: state.pageTag.uiPage,
-        reduxCurrentApr : state.pageTag.currentApr,
+        reduxCurrentApr: state.pageTag.currentApr,
         cardType: state.pageTag.cardType,
+        bankName: state.pageTag.bankName,
         promotionMsg: state.pageTag.promotionMsg,
-        purChaseRate: state.pageTag.purChaseRate,
+        purchaseRate: state.pageTag.purchaseRate,
         creditLimit: state.pageTag.creditLimit
     }
 }
