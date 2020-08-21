@@ -9,8 +9,8 @@ const NotEligiblePage = props => {
 
     if (props.renderUiPage === 'NotEligible') {
         uiRender = <div className="section">
-            <div className="row">
-                <h2>Sorry,You are not eligible</h2>
+            <div className="row txtCenter">
+                <h2><b>Sorry, You are not eligible!</b></h2>
             </div>
             <br></br>
             <div className="row txtCenter">You need to be at least 18 years old to apply for a credit card, but some cards have a higher minimum age. </div>
@@ -20,7 +20,7 @@ const NotEligiblePage = props => {
                     <label>&nbsp;</label>
                 </div>
                 <div className="col span-3-of-3 btnCenter">
-                    <input type="submit" value="Back to Form Page" onClick={props.switchToFormPage}></input>
+                    <input type="submit" value="Go Back" onClick={props.switchToFormPage}></input>
                 </div>
             </div>
         </div>

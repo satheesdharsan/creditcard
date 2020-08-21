@@ -15,8 +15,8 @@ const EligiblePage = props => {
     }
 
     let uiRender = <div className="section">
-        <div className="row">
-            <h2>Congratulations! You are eligible for {props.bankName} {props.cardType} Credit Card</h2>
+        <div className="row txtCenter">
+            <h2><b>Congratulations! You are eligible for {props.bankName} {props.cardType} Credit Card</b></h2>
         </div>
         <div className="row"><b>{props.promotionMsg}</b></div>
         <br></br>
@@ -51,7 +51,7 @@ const EligiblePage = props => {
                 <label>&nbsp;</label>
             </div>
             <div className="col span-3-of-3 btnCenter">
-                <input type="submit" value="Back to Form Page" onClick={props.switchToFormPage}></input>
+                <input type="submit" value="Go Back" onClick={props.switchToFormPage}></input>
             </div>
         </div>
     </div>

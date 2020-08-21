@@ -9,11 +9,11 @@
 }
 
 html {
-  background-color: #fff4ea;
+  background-color: #fff;
   color: #555;
   font-family: "Lato", "Arial", sans-serif;
   font-weight: 200;
-  font-size: 17px;
+  font-size: 15px;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -72,30 +72,20 @@ h2 {
   letter-spacing: 1px;
 }
 
-h2:after {
-  display: block;
-  height: 2px;
-  background-color: #e67e22;
-  content: " ";
-  width: 100px;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-
 .fixed-nav {
   position: fixed;
   z-index: 9999;
   width: 100%;
+  height: 30%;
 }
 
 .header-row {
   margin: auto auto;
   color: #fff;
-  background-color: #000000;
   text-align: center;
   overflow: hidden;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 /* Main navi */
@@ -127,6 +117,9 @@ h2:after {
   border-bottom: 2px solid #e67e22;
 }
 
+.header-line {
+  border-bottom: 4px solid #982881;
+}
 /* ----- Section ----- */
 
 .clearfix {
@@ -142,7 +135,7 @@ h2:after {
 
 .section {
   position: relative;
-  top: 70px;
+  top: 150px;
 }
 
 /* ----- BUTTONS ----- */
@@ -155,15 +148,15 @@ input[type="submit"] {
   border-radius: 200px;
   -webkit-transition: background-color 0.2s, border 0.2s, color 0.2s;
   transition: background-color 0.2s, border 0.2s, color 0.2s;
-  background-color: #e67e22;
-  border: 1px solid #e67e22;
+  background-color: #E63888;
+  border: 1px solid #982881;
   color: #fff;
   margin-right: 15px;
 }
 
 input[type="submit"]:hover,
 input[type="submit"]:active {
-  background-color: #cf6d17;
+  background-color: #982881;
 }
 
 /* ----------------------------------------------- */
@@ -188,6 +181,7 @@ input[type="date"] {
   text-align: center;
   display: block;
   color: red;
+  font-size: small;
 }
 
 /*  GRID OF THREE   ============================================================================= */
@@ -227,7 +221,7 @@ input[type="date"] {
   display: block;
   width: 25%;
   height: 25%;
-  background-color: #e67e22;
+  background-color: #982881;
   border-radius: 100%;
   animation: sk-chase-dot-before 2s infinite ease-in-out both;
 }
@@ -300,9 +294,15 @@ input[type="date"] {
   font-size: 150%;
   padding: 1%;
 }
+
 .btnCenter {
   display: flex;
   justify-content: center;
+  font-weight: bold;
+}
+
+.btnCenter input{
+  font-weight: bold;
 }
 
 .txtCenter {
@@ -318,6 +318,16 @@ input[type="date"] {
 .imageCenter img {
   height: 10rem;
   width: 16rem;
+}
+
+.logoSize {
+  padding-top: 10px;
+  float: right;
+}
+
+.logoSize img {
+width: 50%;
+height: 80%;
 }
 
 /* Media queries */
@@ -350,17 +360,7 @@ input[type="date"] {
     word-spacing: 1px;
     padding: 2px 5px 5px 50px;
   }
-
-  h2:after {
-    display: block;
-    height: 2px;
-    background-color: #e67e22;
-    content: " ";
-    width: 25px;
-    margin: 0 auto;
-    margin-top: 5px;
-    margin-bottom: 10px;
-  }
+ 
 }
 
 /* Small phones to small tablets: from 481px to 767px */

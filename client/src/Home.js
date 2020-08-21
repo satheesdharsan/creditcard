@@ -25,6 +25,9 @@ const Home = props => {
             if (event.target.value.length < 2) {
                 setFormErrorFirstName('Atleast 2 characters')
             }
+            else if (/^[A-Za-z]+$/g.test(event.target.value) == false) {
+                setFormErrorFirstName('FirstName should allows only letters');
+            }
             else {
                 setFormErrorFirstName('')
             }
@@ -39,6 +42,9 @@ const Home = props => {
         else {
             if (event.target.value.length < 2) {
                 setFormErrorLastName('Atleast 2 characters')
+            }
+            else if (/^[A-Za-z]+$/g.test(event.target.value) == false) {
+                setFormErrorLastName('LastName should allows only letters');
             }
             else {
                 setFormErrorLastName('')
@@ -99,7 +105,7 @@ const Home = props => {
     if (props.renderUiPage === 'Home') {
         uiRender = <div className="section">
             <div className="row subHeadingContainer">
-                <h2>Pre-qualification Check Form</h2>
+                <h2>Credit Card Eligibility Checker</h2>
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="row">
@@ -109,7 +115,7 @@ const Home = props => {
                                 <label>First Name *</label>
                             </div>
                             <div className="col span-1-of-3">
-                                <input type="text" id="firstName" placeholder="Enter your First Name" required onChange={handleFirstNameChange} value={firstName} maxLength="15" />
+                                <input type="text" id="firstName" name="name" placeholder="Enter your First Name" required onChange={handleFirstNameChange} value={firstName} maxLength="15" />
                             </div>
                             <div className="col span-1-of-3 errorMessage">
                                 <p id="formErrorFirstName">{formErrorFirstName}</p>
@@ -120,7 +126,7 @@ const Home = props => {
                                 <label>Last Name *</label>
                             </div>
                             <div className="col span-1-of-3">
-                                <input type="text" id="lastName" placeholder="Enter your Last Name" required onChange={handleLastNameChange} value={lastName} maxLength="15" />
+                                <input type="text" id="lastName" name="name" placeholder="Enter your Last Name" required onChange={handleLastNameChange} value={lastName} maxLength="15" />
                             </div>
                             <div className="col span-1-of-3 errorMessage">
                                 <p id="formErrorLastName">{formErrorLastName}</p>
@@ -139,7 +145,7 @@ const Home = props => {
                         </div>
                         <div className="row">
                             <div className="col span-1-of-3">
-                                <label>Birth Date *</label>
+                                <label>Date of Birth *</label>
                             </div>
                             <div className="col span-1-of-3">
                                 <input type="date" id="dob" placeholder="dd-mm-yyyy" required onChange={handleDobChange} value={dob} max={todayDate()} />

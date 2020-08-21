@@ -8,17 +8,13 @@ const Nav = (props) => {
     <>
       <div className="fixed-nav">
         <nav>
-          <div className="header-row clearfix">
-            <div></div>
-            <div></div>
-            <h1>Credit Card Qualification</h1>
-            <ul className="main-nav">
-              <li>
-                <Link to="/" onClick={props.switchToFormPage}>Home</Link>
-              </li>
-            </ul>
+          <div className="header-row">
+            <div className="logoSize">
+              <img src="../logo.png" alt='HD Decisions'></img>
+            </div>
           </div>
         </nav>
+        <div className="header-line"></div>
       </div>
     </>
   );
